@@ -1,0 +1,13 @@
+{
+	"context":{
+		"helloWorld":"Hello World! 컨텍스트"
+	},
+	"admin":{
+		"configs":{
+			"form":{
+				"default_setting":"모듈기본설정",
+				"templet":"템플릿"
+			}
+		}
+	}
+}

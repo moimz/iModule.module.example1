@@ -1,0 +1,102 @@
+{
+	"id":"com.moimz.imodule.module.example1",
+	"icon":"mi mi-imodule",
+	"title":{
+		"ko":"아이모듈 모듈 예제 #1"
+	},
+	"version":"3.0.0",
+	"description":{
+		"ko":"컨텍스트와 모듈 데이터베이스 테이블을 가지는 일반적인 모듈예제"
+	},
+	"author":{
+		"name":"Arzz",
+		"email":"arzz@arzz.com"
+	},
+	"homepage":"http://www.imodule.kr",
+	"dependencies":{
+		"core":"3.0.0",
+		"attachment":"3.0.0"
+	},
+	"language":"ko",
+	"admin":true,
+	"context":true,
+	"global":false,
+	"configs":{
+		"templet":{
+			"type":"templet",
+			"default":"default"
+		}
+	},
+	"databases":{
+		"example1_table":{
+			"columns":{
+				"idx":{
+					"type":"int",
+					"length":11,
+					"comment":"자동증가고유값"
+				},
+				"column1":{
+					"type":"varchar",
+					"length":100,
+					"comment":"VARCHAR 타입",
+					"is_null":true
+				},
+				"column2":{
+					"type":"enum",
+					"length":"'YES','NO'",
+					"default":"YES",
+					"comment":"ENUM 타입"
+				},
+				"column3":{
+					"type":"text",
+					"is_null":false,
+					"comment":"TEXT 타입"
+				},
+				"column4":{
+					"type":"date",
+					"default":"0000-00-00",
+					"comment":"날짜(YYYY-MM-DD) 타입"
+				}
+			},
+			"indexes":{
+				"idx":"primary_key",
+				"column1,column2":"index",
+				"column4":"unique"
+			},
+			"auto_increment":"idx",
+			"datas":[
+				{"idx":1,"column1":"기본데이터 1","column2":"YES","column3":"기본데이터 3","column4":"2018-04-30"},
+				{"idx":2,"column1":"기본데이터 2","column2":"NO","column3":"기본데이터 4","column4":"2018-05-01"}
+			]
+		},
+		"example2_table":{
+			"columns":{
+				"column1":{
+					"type":"varchar",
+					"length":10,
+					"comment":"VARCHAR 타입",
+					"is_null":true
+				},
+				"column2":{
+					"type":"enum",
+					"length":"'YES','NO'",
+					"default":"YES",
+					"comment":"ENUM 타입"
+				},
+				"column3":{
+					"type":"text",
+					"is_null":false,
+					"comment":"TEXT 타입"
+				},
+				"column4":{
+					"type":"date",
+					"default":"0000-00-00",
+					"comment":"날짜(YYYY-MM-DD) 타입"
+				}
+			},
+			"indexes":{
+				"column1,column2":"primary_key"
+			}
+		}
+	}
+}
