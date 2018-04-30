@@ -73,7 +73,7 @@
 			"columns":{
 				"column1":{
 					"type":"varchar",
-					"length":10,
+					"length":100,
 					"comment":"VARCHAR 타입",
 					"is_null":true
 				},

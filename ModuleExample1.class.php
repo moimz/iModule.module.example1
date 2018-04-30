@@ -4,11 +4,11 @@
  *
  * 컨텍스트와 모듈 데이터베이스 테이블을 가지는 일반적인 모듈예제
  * 
- * @file /modules/calendar/ModuleExample1.class.php
+ * @file /modules/examples1/ModuleExample1.class.php
  * @author Arzz (arzz@arzz.com)
  * @license MIT License
  * @version 3.0.0
- * @modified 2018. 4. 29.
+ * @modified 2018. 4. 30.
  */
 class ModuleExample1 {
 	/**
@@ -405,6 +405,10 @@ class ModuleExample1 {
 			case 'helloWorld' :
 				$html.= $this->getHelloWorldContext($configs);
 				break;
+				
+			case 'database' :
+				$html.= $this->getDatabaseContext($configs);
+				break;
 		}
 		
 		$html.= $this->getFooter($configs);
@@ -465,13 +469,51 @@ class ModuleExample1 {
 	 * @return string $html 컨텍스트 HTML
 	 */
 	function getHelloWorldContext($configs=null) {
-		$header = PHP_EOL.'<div id="ModuleExample1Context">'.PHP_EOL;
+		$header = PHP_EOL.'<div id="ModuleExampleHelloWorldContext">'.PHP_EOL;
 		$footer = PHP_EOL.'</div>'.PHP_EOL;
 		
 		/**
 		 * 템플릿파일을 호출한다.
+		 * @see /modules/examples1/templets/default/helloWorld.php
 		 */
 		return $this->getTemplet($configs)->getContext('helloWorld',get_defined_vars(),$header,$footer);
+	}
+	
+	/**
+	 * 캘린더 컨텍스트를 가져온다.
+	 *
+	 * @param object $configs 사이트맵 관리를 통해 설정된 페이지 컨텍스트 설정
+	 * @return string $html 컨텍스트 HTML
+	 */
+	function getDatabaseContext($configs=null) {
+		/**
+		 * WHERE절로 검색하여 데이터 한개만 가지고 오기
+		 */
+		$data = $this->db()->select($this->table->example1)->where('idx',1)->getOne();
+		
+		/**
+		 * ORDER BY로 데이터 정렬하여 LIMIT 0, 10 개 데이터를 가져오기
+		 */
+		$datas1 = $this->db()->select($this->table->example1)->orderBy('idx','asc')->limit(0,10)->get();
+		
+		/**
+		 * 데이터 LEFT JOIN 하기
+		 */
+		$datas2 = $this->db()->select($this->table->example1.' E1')->join($this->table->example2.' E2','E1.column1=E2.column1 and E1.column2=E2.column2','LEFT')->get();
+		
+		/**
+		 * 특정 컬럼만 가져오기
+		 */
+		$datas3 = $this->db()->select($this->table->example1.'idx,column1')->get();
+		
+		$header = PHP_EOL.'<div id="ModuleExampleDatabaseContext">'.PHP_EOL;
+		$footer = PHP_EOL.'</div>'.PHP_EOL;
+		
+		/**
+		 * 템플릿파일을 호출한다.
+		 * @see /modules/examples1/templets/default/database.php
+		 */
+		return $this->getTemplet($configs)->getContext('database',get_defined_vars(),$header,$footer);
 	}
 	
 	/**

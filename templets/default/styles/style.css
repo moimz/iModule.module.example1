@@ -1,0 +1,16 @@
+/**
+ * 이 파일은 iModule 모듈예제 #1 의 일부입니다. (https://www.imodule.kr)
+ *
+ * 모듈예제 #1 기본템플릿 - 템플릿에서 사용할 스타일시트
+ * 이 자바스크립트 파일은 템플릿 폴더의 package.json 에 정의된 styles 에 의해 자동으로 호출된다.
+ * 광역으로 적용되는 것을 막기 위해 가급적 모듈 컨테이너와 해당 템플릿에서만 적용되는 스타일을 지정한다.
+ * @see /modules/examples1/templets/default/package.json
+ * 
+ * @file /modules/examples1/templets/default/styles/style.css
+ * @author Arzz (arzz@arzz.com)
+ * @license MIT License
+ * @version 3.0.0
+ * @modified 2018. 4. 30.
+ */
+div[data-module=example1][data-templet=default] b {color:red;}
+div[data-module=example1][data-templet=default] pre {font-size:14px;}
