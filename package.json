@@ -18,7 +18,7 @@
 		"attachment":"3.0.0"
 	},
 	"language":"ko",
-	"admin":true,
+	"admin":false,
 	"context":true,
 	"global":false,
 	"configs":{
