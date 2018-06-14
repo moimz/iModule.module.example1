@@ -504,7 +504,7 @@ class ModuleExample1 {
 		/**
 		 * 특정 컬럼만 가져오기
 		 */
-		$datas3 = $this->db()->select($this->table->example1.'idx,column1')->get();
+		$datas3 = $this->db()->select($this->table->example1, 'idx,column1')->get();
 		
 		$header = PHP_EOL.'<div id="ModuleExampleDatabaseContext">'.PHP_EOL;
 		$footer = PHP_EOL.'</div>'.PHP_EOL;
